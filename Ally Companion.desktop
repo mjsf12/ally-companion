@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Ally Companion
+Comment=Serve para trocar o TDP e a bateria com gui
+Exec=/home/gamer/rustCode/ally-companion/target/release/ally-companion
