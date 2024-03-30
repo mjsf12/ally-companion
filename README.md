@@ -1,5 +1,6 @@
 # Ally Companion
 This application, intricately crafted to harmonize with ROG Ally, simplifies the task of adjusting TDP and selecting the maximum battery charge possible within the ROG Ally interface.
+Ps:. Linux only.
 ## Build
 Make sure to install Rust, clone the git repository, and perform a 'cargo build --release' command. The app will be located in 'ally-companion/target/release'.
 ## Startup
