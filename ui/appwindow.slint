@@ -1,0 +1,124 @@
+import { Button,Slider , VerticalBox,HorizontalBox } from "std-widgets.slint";
+import { CheckBox,TextEdit } from "std-widgets.slint";
+export component AppWindow inherits Window {
+    in-out property<int> tdp: 10;
+    in-out property<int> battery: 80;
+    in-out property<string> ryzenadj: "/usr/bin/ryzenadj";
+    in-out property<string> ryzenadjout: "";
+    title: "ROG Ally companion";
+    height: 900px;
+    width: 1200px;
+    callback request-change-tdp(int);
+    callback request-change-bat(int);
+    callback request-ryzenadj();
+    HorizontalBox {
+        VerticalBox {
+           height: 100%;
+            width: 49%;
+            Text {
+                height: 25px;
+                text: "TDP: \{root.tdp}";
+            }
+            HorizontalBox {
+            Slider {
+                width: 80%;
+                height: 25px;
+                minimum: 5;
+                maximum: 35;
+                value: root.tdp;
+                changed(v) => {
+                    root.tdp = v;
+                }
+            }
+            Button {
+                text: "Change";
+                width: 20%;
+                height: 25px;
+                clicked => {
+                    root.request-change-tdp(root.tdp);
+                }
+            }
+        }
+        Text {
+            height: 25px;
+            text: "Max Battery: \{root.battery}";
+        }
+        HorizontalBox {
+            Slider {
+                width: 80%;
+                height: 25px;
+                minimum: 10;
+                maximum: 100;
+                value: root.battery;
+                changed(v) => {
+                    root.battery = v;
+                }
+
+            }
+            Button {
+                text: "Change";
+                width: 20%;
+                height: 25px;
+                clicked => {
+                    root.request-change-bat(root.battery);
+                }
+            }
+        }
+        // Text {
+        //     height: 30px;
+        //     text: "Config:";
+
+        // }
+        // HorizontalBox {
+        //     height: 30px;
+        //     CheckBox {
+        //         text: "Set TDP on startup";
+        //         checked: true;
+        //     }
+        //     CheckBox {
+        //         text: "Set Battery on startup";
+        //         checked: true;
+        //     }
+
+        // }
+        // HorizontalBox{
+        //     height: 60px;
+        //     Text {
+        //         text: "Ryzenadj:";
+        //     }
+        //     TextEdit {
+        //         text: ryzenadj;
+        //     }
+        //     Button {
+        //         text: "Save";
+        //     }        
+        // }
+    }
+        VerticalBox {
+            height: 100%;
+            width: 49%;
+            HorizontalBox{
+                height: 60px;
+                // CheckBox {
+                //     text: "Auto Update Info";
+                //     checked: true;
+                // }
+                Button {
+                    text: "Update";
+                    clicked => {
+                        root.request-ryzenadj();
+                    }
+                    
+                }
+            }
+            TextEdit {
+                height: 100%;
+                width: 100%;
+                enabled: false;
+                text: ryzenadjout;
+            }
+ 
+         }
+    }
+}
+   

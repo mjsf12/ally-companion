@@ -1,0 +1,18 @@
+[package]
+name = "ally-companion"
+version = "0.2.0"
+authors = ["Marcilio Farias <marciliojr.farias@gmail.com>"]
+edition = "2021"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+slint = "1.4"
+tray-item = { version='0.9.0', features = ["ksni"] }
+png = "0.16"
+serde_json = "1.0.114"
+
+
+[build-dependencies]
+slint-build = "1.4"
